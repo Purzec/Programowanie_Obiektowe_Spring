@@ -32,7 +32,7 @@ public class Projekt {
 
     @CreationTimestamp
     @Column(name = "dataczas_utworzenia", nullable = false, updatable = false)
-    private LocalDateTime dataCzasUtworzenia;
+    private LocalDate dataCzasUtworzenia;
 
     @UpdateTimestamp
     @Column(name = "dataczas_modyfikacji", nullable = false)
@@ -58,7 +58,7 @@ public class Projekt {
     public Projekt() {
     }
 
-    public Projekt(Integer i, String nazwa1, String opis1, LocalDateTime now, LocalDate of) {
+    public Projekt(Integer i, String nazwa1, String opis1, LocalDate now, LocalDate of) {
         this.projektId=i;
         this.nazwa=nazwa1;
         this.opis=opis1;
@@ -101,11 +101,11 @@ public class Projekt {
         this.nazwa = nazwa;
     }
 
-    public LocalDateTime getDataCzasUtworzenia() {
+    public LocalDate getDataCzasUtworzenia() {
         return dataCzasUtworzenia;
     }
 
-    public void setDataCzasUtworzenia(LocalDateTime dataCzasUtworzenia) {
+    public void setDataCzasUtworzenia(LocalDate dataCzasUtworzenia) {
         this.dataCzasUtworzenia = dataCzasUtworzenia;
     }
 

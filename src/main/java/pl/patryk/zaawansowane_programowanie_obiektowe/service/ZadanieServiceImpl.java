@@ -1,5 +1,6 @@
 package pl.patryk.zaawansowane_programowanie_obiektowe.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,12 @@ public class ZadanieServiceImpl implements ZadanieService{
     ProjektRepository projektRepository;
     ZadanieRepository zadanieRepository;
 
+    @Autowired
+    public ZadanieServiceImpl(StudentRepository studentRepository, ProjektRepository projektRepository, ZadanieRepository zadanieRepository) {
+        this.studentRepository = studentRepository;
+        this.projektRepository = projektRepository;
+        this.zadanieRepository = zadanieRepository;
+    }
 
     @Override
     public Optional<Zadanie> getZadanie(Integer zadanieId) {

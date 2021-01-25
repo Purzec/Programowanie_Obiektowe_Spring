@@ -7,13 +7,16 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import pl.patryk.zaawansowane_programowanie_obiektowe.model.Student;
 import pl.patryk.zaawansowane_programowanie_obiektowe.model.Zadanie;
 import pl.patryk.zaawansowane_programowanie_obiektowe.service.ZadanieService;
 
 import javax.validation.Valid;
+import java.net.URI;
 
 @RestController
+@RequestMapping("/api")
 public class ZadanieRestController {
 
     ZadanieService zadanieService;
@@ -21,6 +24,14 @@ public class ZadanieRestController {
     @Autowired
     public ZadanieRestController(ZadanieService zadanieService) {
         this.zadanieService = zadanieService;
+    }
+
+    @PostMapping(path = "/zadanie")
+    ResponseEntity<Void> createZadanie(@Valid @RequestBody Zadanie zadanie){
+        Zadanie createdZadanie = zadanieService.setZadanie(zadanie);
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{zadanieId}").buildAndExpand(createdZadanie.getZadanieId()).toUri();
+        return ResponseEntity.created(location).build();
     }
 
 

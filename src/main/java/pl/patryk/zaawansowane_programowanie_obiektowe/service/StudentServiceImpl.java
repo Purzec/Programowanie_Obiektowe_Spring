@@ -30,10 +30,10 @@ ProjektRepository projektRepository;
         return studentRepository.findById(studentId);
     }
 
-    @Override
+  /*  @Override
     public Optional<Student> getStudent(String index) {
         return studentRepository.findByNrIndeksu(index);
-    }
+    }*/
 
     @Override
     public Student setStudent(Student student) {

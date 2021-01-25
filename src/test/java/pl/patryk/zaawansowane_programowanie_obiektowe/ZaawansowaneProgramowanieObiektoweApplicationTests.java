@@ -71,7 +71,7 @@ class ProjektRestControllerTest {
         private JacksonTester<Projekt> jacksonTester;
         @Test
         public void getProjekty() throws Exception {
-            Projekt projekt = new Projekt(1, "Nazwa1", "Opis1", LocalDateTime.now(), LocalDate.of(2020, 6, 7));
+            Projekt projekt = new Projekt(1, "Nazwa1", "Opis1", LocalDate.now(), LocalDate.of(2020, 6, 7));
             Page<Projekt> page = new PageImpl<>(Collections.singletonList(projekt));
             when(mockProjektService.getProjekty(any(Pageable.class))).thenReturn(page);
             mockMvc.perform(get(apiPath).contentType(MediaType.APPLICATION_JSON))
@@ -87,7 +87,7 @@ class ProjektRestControllerTest {
         }
         @Test
         public void getProjekt() throws Exception {
-            Projekt projekt = new Projekt(1, "Nazwa2", "Opis2", LocalDateTime.now(), LocalDate.of(2020, 6, 7));
+            Projekt projekt = new Projekt(1, "Nazwa2", "Opis2", LocalDate.now(), LocalDate.of(2020, 6, 7));
             when(mockProjektService.getProjekt(projekt.getProjektId()))
                     .thenReturn(Optional.of(projekt));
             mockMvc.perform(get(apiPath + "/{projektId}", projekt.getProjektId()).accept(MediaType.APPLICATION_JSON))
@@ -132,7 +132,7 @@ class ProjektRestControllerTest {
 
         @Test
         public void updateProjekt() throws Exception {
-            Projekt projekt = new Projekt(5, "Nazwa5", "Opis5", LocalDateTime.now(), LocalDate.of(2021, 6, 7));
+            Projekt projekt = new Projekt(5, "Nazwa5", "Opis5", LocalDate.now(), LocalDate.of(2021, 6, 7));
             String jsonProjekt = jacksonTester.write(projekt).getJson();
 
             when(mockProjektService.getProjekt(projekt.getProjektId())).thenReturn(Optional.of(projekt));

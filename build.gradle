@@ -30,4 +30,8 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    testLogging {
+       // showStandardStreams = true //ustawia drukowanie komunikatów w konsoli
+    }
+
 }

@@ -11,7 +11,7 @@ public interface StudentService {
 
     Optional<Student> getStudent(Integer studentId);
 
-    Optional<Student> getStudent(String index);
+   // Optional<Student> getStudent(String index);
 
     Student setStudent(Student student);
 
